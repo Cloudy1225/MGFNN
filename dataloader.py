@@ -46,8 +46,6 @@ def load_data(dataset, dataset_path):
     Y = torch.tensor(data['labels'], dtype=torch.int64)
 
     adjs = data['adjs']
-    if dataset in ['DBLP']:
-        del adjs['PATAP']
     num_nodes = Y.shape[0]
     Gs = {view: build_graph_from_edges(adj, num_nodes)
           for view, adj in adjs.items()}
